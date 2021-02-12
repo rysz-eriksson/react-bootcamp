@@ -1,3 +1,5 @@
+import React from 'react';
+
 import FuncComponent from './components/func_component';
 import ClassComponent from './components/class_component';
 import PureComponent from './components/pure_component';
