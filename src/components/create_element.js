@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 const createElemComp = React.createElement(
   "p",
@@ -7,6 +6,4 @@ const createElemComp = React.createElement(
   "And finally - createElement method"
 );
 
-const container = document.getElementById('container');
-
-ReactDOM.render(createElemComp, container);
+export default createElemComp;

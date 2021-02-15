@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import createElemComp from './components/create_element';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -9,12 +10,6 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById('root')
-);
-
-const createElemComp = React.createElement(
-  "p",
-  null,
-  "And finally - createElement method"
 );
 
 const container = document.getElementById('container');
