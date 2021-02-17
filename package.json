@@ -1,0 +1,30 @@
+{
+  "name": "react-movies-project",
+  "version": "1.0.0",
+  "description": "Netflix-like app letting you search among the movies",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rysz-eriksson/react-bootcamp.git"
+  },
+  "author": "rysz-eriksson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rysz-eriksson/react-bootcamp/issues"
+  },
+  "homepage": "https://github.com/rysz-eriksson/react-bootcamp#readme",
+  "dependencies": {
+    "jest": "^26.6.3",
+    "react": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.5.0"
+  }
+}
