@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 const App = () => {
     return (
@@ -6,8 +7,8 @@ const App = () => {
             <p>
                 Let's test the setup using webpack and babel.
             </p>
-            <p>
-                Testing hot reloading - looks like it works!
+            <p className='test-styles'>
+                Testing hot reloading - looks like it works!!!
             </p>
         </>
     )
