@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://react-movies-project/./src/app.css"],"names":[],"mappings":"AAAA,KACI,aACJ","file":"main.css","sourcesContent":[".app {\r\n    color: darkblue;\r\n}"],"sourceRoot":""}

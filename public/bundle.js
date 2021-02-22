@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 886:
+/***/ 326:
 /***/ ((module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -13,9 +13,9 @@ var react_dom = __webpack_require__(935);
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
 var injectStylesIntoStyleTag = __webpack_require__(379);
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
-// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./src/style.css
-var style = __webpack_require__(426);
-;// CONCATENATED MODULE: ./src/style.css
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/app.css
+var app = __webpack_require__(660);
+;// CONCATENATED MODULE: ./src/app.css
 
             
 
@@ -24,34 +24,34 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = injectStylesIntoStyleTag_default()(style/* default */.Z, options);
+var update = injectStylesIntoStyleTag_default()(app/* default */.Z, options);
 
 
 
-/* harmony default export */ const src_style = (style/* default.locals */.Z.locals || {});
+/* harmony default export */ const src_app = (app/* default.locals */.Z.locals || {});
 ;// CONCATENATED MODULE: ./src/app.js
 
 
 
 var App = function App() {
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("p", null, "Let's test the setup using webpack and babel."), /*#__PURE__*/react.createElement("p", {
-    className: "test-styles"
-  }, "Testing hot reloading - looks like it works!!!"));
+  return /*#__PURE__*/react.createElement("div", {
+    className: "app"
+  }, /*#__PURE__*/react.createElement("p", null, "Let's test the setup using webpack and babel."), /*#__PURE__*/react.createElement("p", null, "Testing hot reloading - looks like it works!!!"));
 };
 
-/* harmony default export */ const app = (App);
+/* harmony default export */ const src_app_0 = (App);
 ;// CONCATENATED MODULE: ./src/index.js
 /* module decorator */ module = __webpack_require__.hmd(module);
 
 
  // import 'normalize.css/normalize.css';
 
-react_dom.render( /*#__PURE__*/react.createElement(react.StrictMode, null, /*#__PURE__*/react.createElement(app, null)), document.getElementById('root'));
+react_dom.render( /*#__PURE__*/react.createElement(react.StrictMode, null, /*#__PURE__*/react.createElement(src_app_0, null)), document.getElementById('root'));
 module.hot.accept();
 
 /***/ }),
 
-/***/ 426:
+/***/ 660:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -66,7 +66,7 @@ module.hot.accept();
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".test-styles {\r\n    color: red;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,UAAU;AACd","sourcesContent":[".test-styles {\r\n    color: red;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://./src/app.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1052,7 +1052,7 @@ module.exports = function (list, options) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(886);
+/******/ 	var __webpack_exports__ = __webpack_require__(326);
 /******/ 	
 /******/ })()
 ;
