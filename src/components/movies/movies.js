@@ -4,9 +4,9 @@ import Movie from '../movie/movie';
 const Movies = ({movies}) => {
     return (
         <section>
-            {movies.map(item => {
-                <Movie movie={item}/>
-            })}
+            {movies.map(movie => (
+                <Movie key={movie.id} movie={movie}/>
+            ))}
         </section>
     )
 }
