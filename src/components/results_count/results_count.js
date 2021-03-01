@@ -1,9 +1,15 @@
 import React from 'react';
 
-const ResultsCount = (props) => {
+import countStyles from './results_count.module.scss';
+
+const ResultsCount = ({count}) => {
     return (
-        <section>
-        
+        <section className={countStyles.section}>
+            <h4>
+                <span>
+                    {count}
+                </span> movies found
+            </h4>
         </section>
     )
 }

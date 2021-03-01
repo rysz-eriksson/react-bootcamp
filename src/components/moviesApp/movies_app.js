@@ -17,16 +17,41 @@ class MoviesApp extends React.Component {
         movies: []
     }
 
-    componentDidMount() {
+    handleSearch = (pattern) => {
+        console.log(pattern)
+        this.setState(() => {
+            return {
+                movies: this.state.movies.filter(({title}) => title.toLowerCase().includes(pattern.toLowerCase()))
+            }
+        })
+    }
+
+    handleFilter = (genre) => {
+        if (genre !== 'all') {
+            this.setState(() => {
+                return  {
+                    movies: movies.filter(({genres}) => genres.includes(genre))
+                }
+            })
+        }
+    }
+
+    getInitialState = () => {
         const json = JSON.parse(JSON.stringify(JSONData))
         this.setState({ movies: json })
     }
+
+
+    componentDidMount() {
+        this.getInitialState()
+    }
+
     render() {
         return (
             <>
                 <Header>
                     <AddMovie />
-                    <SearchMovie />
+                    <SearchMovie handleSearch={this.handleSearch}/>
                 </Header>
                 <Main>
                     <div>

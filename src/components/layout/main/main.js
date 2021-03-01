@@ -1,8 +1,9 @@
 import React from 'react';
+import mainStyles from './main.module.scss';
 
 const Main = (props) => {
     return (
-        <main>
+        <main className={mainStyles.main}>
             {props.children}
         </main>
     )
