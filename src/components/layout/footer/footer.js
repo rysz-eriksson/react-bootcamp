@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
-    return (
-        <footer>
+import footerStyles from './footer.module.scss';
 
+const Footer = (props) => {
+    return (
+        <footer className={footerStyles.footer}>
+            {props.children}
         </footer>
     )
 }

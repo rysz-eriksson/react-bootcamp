@@ -9,6 +9,7 @@ import FilterMovies from '../filter_movies/filter_movies';
 import SortMovies from '../sort_movies/sort_movies';
 import ResultsCount from '../results_count/results_count';
 import Movies from '../movies/movies';
+import Logo from '../shared/logo/logo';
 
 import JSONData from '../../data/movies.json';
 
@@ -61,7 +62,9 @@ class MoviesApp extends React.Component {
                     <ResultsCount count={this.state.movies.length} />
                     <Movies movies={this.state.movies}/>
                 </Main>
-                <Footer />
+                <Footer>
+                    <Logo />
+                </Footer>
             </>
         )
     }

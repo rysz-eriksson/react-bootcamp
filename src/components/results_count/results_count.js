@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import countStyles from './results_count.module.scss';
 
@@ -12,6 +13,10 @@ const ResultsCount = ({count}) => {
             </h4>
         </section>
     )
+}
+
+ResultsCount.PropTypes = {
+    count: PropTypes.number.isRequired,
 }
 
 export default ResultsCount;
