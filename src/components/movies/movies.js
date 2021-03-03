@@ -15,7 +15,7 @@ const Movies = ({movies}) => {
     )
 }
 
-Movies.PropTypes = {
+Movies.propTypes = {
     movies: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
@@ -23,13 +23,13 @@ Movies.PropTypes = {
             tagline: PropTypes.string,
             vote_average: PropTypes.number.isRequired,
             vote_count: PropTypes.number.isRequired,
-            release_date: PropTypes.number.isRequired,
+            release_date: PropTypes.string.isRequired,
             poster_path: PropTypes.string.isRequired,
             overview: PropTypes.string,
             budget: PropTypes.number,
             revenue: PropTypes.number.isRequired,
             genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-            runtime: PropTypes.number.isRequired,
+            runtime: PropTypes.number,
         })
     ).isRequired,
 }

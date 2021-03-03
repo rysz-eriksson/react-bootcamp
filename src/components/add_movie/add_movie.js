@@ -1,10 +1,8 @@
 import React from 'react';
 
-const AddMovie = (props) => {
+const AddMovie = () => {
     return (
-        <>
-        
-        </>
+       <button>Add movie</button>
     )
 }
 

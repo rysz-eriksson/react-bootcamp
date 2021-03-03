@@ -11,6 +11,9 @@
 # production
 /build
 
+# playground
+/playground
+
 # misc
 .DS_Store
 .env.local

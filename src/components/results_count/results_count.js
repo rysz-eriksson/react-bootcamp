@@ -15,7 +15,7 @@ const ResultsCount = ({count}) => {
     )
 }
 
-ResultsCount.PropTypes = {
+ResultsCount.propTypes = {
     count: PropTypes.number.isRequired,
 }
 

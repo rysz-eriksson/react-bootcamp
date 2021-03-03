@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import formStyles from './search_movie.module.scss';
 
 class SearchMovie extends React.Component {
     constructor(props) {
@@ -21,10 +22,18 @@ class SearchMovie extends React.Component {
 
       render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form 
+            onSubmit={this.handleSubmit}
+            className={formStyles.form}
+            >
                 <label>
                     Find your movie 
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    <input 
+                    type="text" 
+                    value={this.state.value} 
+                    onChange={this.handleChange} 
+                    placeholder="What do you want to watch?"
+                    />
                 </label>
                 <button 
                     type="submit"
@@ -36,7 +45,7 @@ class SearchMovie extends React.Component {
       }
 }
 
-SearchMovie.PropTypes = {
+SearchMovie.propTypes = {
     handleSearch: PropTypes.func.isRequired,
 }
 

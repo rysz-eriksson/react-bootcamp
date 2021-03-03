@@ -15,32 +15,26 @@ import JSONData from '../../data/movies.json';
 
 class MoviesApp extends React.Component {
     state = {
-        movies: []
+        movies: [],
     }
 
     handleSearch = (pattern) => {
-        console.log(pattern)
-        this.setState(() => {
-            return {
-                movies: this.state.movies.filter(({title}) => title.toLowerCase().includes(pattern.toLowerCase()))
-            }
-        })
+        // todo in next tasks
     }
 
     handleFilter = (genre) => {
-        if (genre !== 'all') {
-            this.setState(() => {
-                return  {
-                    movies: movies.filter(({genres}) => genres.includes(genre))
-                }
-            })
-        }
+        // todo in next task
+    }
+
+    handleSort = (criteria) => {
+        // todo in next tasks
     }
 
     getInitialState = () => {
         const json = JSON.parse(JSON.stringify(JSONData))
         this.setState({ movies: json })
     }
+
 
 
     componentDidMount() {
@@ -51,13 +45,16 @@ class MoviesApp extends React.Component {
         return (
             <>
                 <Header>
-                    <AddMovie />
-                    <SearchMovie handleSearch={this.handleSearch}/>
+                    <div>
+                        <Logo />
+                        <AddMovie />
+                    </div>
+                    <SearchMovie handleSearch={this.handleSearch} />
                 </Header>
                 <Main>
                     <div>
-                        <FilterMovies />
-                        <SortMovies />
+                        <FilterMovies handleFilter={this.handleFilter} />
+                        <SortMovies handleSort={this.handleSort} />
                     </div>
                     <ResultsCount count={this.state.movies.length} />
                     <Movies movies={this.state.movies}/>
