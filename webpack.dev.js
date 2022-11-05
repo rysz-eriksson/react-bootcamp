@@ -8,7 +8,10 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
-    contentBase: path.resolve(__dirname, './build'),
+    static: {
+      directory: path.join(__dirname, './build')
+    },
+    // contentBase: path.resolve(__dirname, './build'),
     hot: true,
   }
 });

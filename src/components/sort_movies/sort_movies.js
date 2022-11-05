@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Dropdown from '../shared/dropdown/dropdown';
 
 import sortStyles from './sort_movies.module.scss';
 
-const SortMovies = (props) => {
+const SortMovies = () => {
+    const [setCriteria, criteria] = useState("release-date")
     return (
         <section className={sortStyles.sort}>
             <label for="sort-movies">Sort movies</label>
-            <select id="sort-movies">
-                <option value="release date">release date</option>
-                <option value="runtime">runtime</option>
-            </select>
+            <Dropdown 
+                options={["release-date", "runtime"]} 
+                setSelected={setCriteria}
+                dropdownId={"sort-movies"}
+            />
         </section>
     )
 }
