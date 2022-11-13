@@ -1,3 +1,17 @@
+$light-grey: #555555;
+
 body {
-    background-color: #555555;
+    background-color: $light-grey;
 }
+
+.menu {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+// colors
+// red #F65261
+// dark-grey #424242
+// dark #232323
+// light-grey #555555

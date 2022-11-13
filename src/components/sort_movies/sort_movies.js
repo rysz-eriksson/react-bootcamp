@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import Dropdown from '../shared/dropdown/dropdown';
+import { sortSet } from './sortSlice';
 
 import sortStyles from './sort_movies.module.scss';
 
 const SortMovies = () => {
-    const [setCriteria, criteria] = useState("release-date")
+    const dispatch = useDispatch()
+    const handleSortChange = value => dispatch(sortSet(value))
+    
     return (
         <section className={sortStyles.sort}>
-            <label for="sort-movies">Sort movies</label>
+            <label htmlFor="sort-movies">Sort movies</label>
             <Dropdown 
                 options={["release-date", "runtime"]} 
-                setSelected={setCriteria}
+                setSelected={handleSortChange}
                 dropdownId={"sort-movies"}
             />
         </section>

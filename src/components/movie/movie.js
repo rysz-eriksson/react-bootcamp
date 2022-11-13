@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 
 import movieStyles from './movie.module.scss';
 import notFound from '../../images/not-found-image.jpg'
+import { useSelector } from 'react-redux';
 
-const Movie = ({movie}) => {
+const getMovieById = (state, id) => state.movies.find(movie => movie.id === id)
+
+const Movie = ({id}) => {
+    const movie = useSelector(state => getMovieById(state, id))
     const addFallbackImage = (e) => {
         e.target.src = notFound
     }
@@ -23,21 +27,23 @@ const Movie = ({movie}) => {
     )
 }
 
-Movie.propTypes = {
-    movie: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        tagline: PropTypes.string,
-        vote_average: PropTypes.number.isRequired,
-        vote_count: PropTypes.number.isRequired,
-        release_date: PropTypes.string.isRequired,
-        poster_path: PropTypes.string.isRequired,
-        overview: PropTypes.string,
-        budget: PropTypes.number,
-        revenue: PropTypes.number.isRequired,
-        genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-        runtime: PropTypes.number,
-    })
-}
+Movie.PropTypes = { id: PropTypes.number.isRequired }
+
+// Movie.propTypes = {
+//     movie: PropTypes.shape({
+//         id: PropTypes.number.isRequired,
+//         title: PropTypes.string.isRequired,
+//         tagline: PropTypes.string,
+//         vote_average: PropTypes.number.isRequired,
+//         vote_count: PropTypes.number.isRequired,
+//         release_date: PropTypes.string.isRequired,
+//         poster_path: PropTypes.string.isRequired,
+//         overview: PropTypes.string,
+//         budget: PropTypes.number,
+//         revenue: PropTypes.number.isRequired,
+//         genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+//         runtime: PropTypes.number,
+//     })
+// }
 
 export default Movie;

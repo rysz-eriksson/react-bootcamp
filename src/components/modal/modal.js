@@ -1,17 +1,17 @@
 import React from "react";
-import { Button } from "../shared/button/button";
+import CloseButton from "../shared/button/close_button/closeButton";
 
-import styles from './modal.module.scss'
+import modalStyles from './modal.module.scss'
 
 const Modal = ({setIsOpen, children}) => 
 {
     return (
-        <>
-            <Button onClick={() => setIsOpen(false)}>
+        <div className={modalStyles.modal}>
+            <CloseButton onClick={() => setIsOpen(false)}>
                 X
-            </Button>
+            </CloseButton>
             {children}
-        </>
+        </div>
     )
 }
 

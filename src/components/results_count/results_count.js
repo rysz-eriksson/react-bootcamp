@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import countStyles from './results_count.module.scss';
 
-const ResultsCount = ({count}) => {
+const countedMovies = state => state.movies.length
+
+const ResultsCount = () => {
+    const count = useSelector(countedMovies)
     return (
         <section className={countStyles.section}>
             <h4>
@@ -13,10 +16,6 @@ const ResultsCount = ({count}) => {
             </h4>
         </section>
     )
-}
-
-ResultsCount.propTypes = {
-    count: PropTypes.number.isRequired,
 }
 
 export default ResultsCount;

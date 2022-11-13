@@ -19,13 +19,14 @@
   },
   "homepage": "https://github.com/rysz-eriksson/react-bootcamp#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.0",
     "jest": "^26.6.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-redux": "^7.2.2",
+    "react-redux": "^7.2.9",
     "react-router": "^5.2.0",
-    "redux": "^4.0.5"
+    "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.17",

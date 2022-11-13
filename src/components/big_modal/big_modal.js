@@ -9,8 +9,10 @@ const BigModal = ({setIsOpen, title, children}) =>
             <div className={styles.darkBG} onClick={() => setIsOpen(false)} />  
             <div className={styles.centered}>
                 <Modal setIsOpen={setIsOpen}>
-                    <h2>{title}</h2>
-                    {children}
+                    <div className={styles.container}>
+                        <h2 className={styles.title}>{title}</h2>
+                        {children}
+                    </div>
                 </Modal>
             </div>
         </>
