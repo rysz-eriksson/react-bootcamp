@@ -25,7 +25,7 @@ const App = () =>
                     <SearchMovie />
                 </Header>
                 <Main>
-                    <div>
+                    <div className='submenu'>
                         <FilterMovies />
                         <SortMovies />
                     </div>

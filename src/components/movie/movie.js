@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import movieStyles from './movie.module.scss';
 import notFound from '../../images/not-found-image.jpg'
 import { useSelector } from 'react-redux';
+import DetailsButton from '../shared/button/details_button/detailsButton';
 
 const getMovieById = (state, id) => state.movies.find(movie => movie.id === id)
 
@@ -14,6 +15,7 @@ const Movie = ({id}) => {
     }
     return (
         <article className={movieStyles.article}>
+            <DetailsButton movieId={id} />
             <img 
                 src={movie.poster_path}
                 onError={addFallbackImage}
