@@ -1,5 +1,4 @@
 import React from "react";
-import Section from "../../layout/section/section";
 import BigModal from "../../big_modal/big_modal";
 import SubmitButton from "../../shared/button/submit_button/submitButton";
 import ResetButton from "../../shared/button/reset_button/resetButton";
@@ -10,10 +9,10 @@ const AddMovieModal = ({setIsOpen}) =>
     const onReset = () => setIsOpen(false)
     return (
         <BigModal setIsOpen={setIsOpen} title={'ADD MOVIE'}>
-            <Section>
+            <section>
                 <ResetButton onClick={onReset} />
                 <SubmitButton onClick={onAddMovie}/>
-            </Section>
+            </section>
         </BigModal>
     )
 }

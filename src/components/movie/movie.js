@@ -1,21 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types'
 
 import movieStyles from './movie.module.scss';
 import notFound from '../../images/not-found-image.jpg'
 import { useSelector } from 'react-redux';
 import DetailsButton from '../shared/button/details_button/detailsButton';
+import DeleteMovieModal from '../delete_movie/deleteMovieModal'
+import EditMovieModal from '../edit_movie/editMovieModal'
+
 
 const getMovieById = (state, id) => state.movies.find(movie => movie.id === id)
 
 const Movie = ({id}) => {
     const movie = useSelector(state => getMovieById(state, id))
+    const [isBtnOpen, setIsBtnOpen] = useState(false)
+    const [isEditMovieOpen, setIsEditMovieOpen] = useState(false)
+    const [isDeleteMovieOpen, setIsDeleteMovieOpen] = useState(false)
     const addFallbackImage = (e) => {
         e.target.src = notFound
     }
+
+    const handleModalsVisibility = value => {
+        switch(value) {
+            case 'Edit':
+                setIsEditMovieOpen(true)
+                setIsBtnOpen(false)
+                break;
+            case 'Delete':
+                setIsDeleteMovieOpen(true)
+                setIsBtnOpen(false)
+                break;
+            case 'editDelete':
+                setIsBtnOpen(false)
+                break;
+    }
+}
+
     return (
-        <article className={movieStyles.article}>
-            <DetailsButton movieId={id} />
+        <article 
+            className={movieStyles.article}
+            onMouseEnter={() => setIsBtnOpen(true)}
+            onMouseLeave={() => setIsBtnOpen(false)}
+        >
             <img 
                 src={movie.poster_path}
                 onError={addFallbackImage}
@@ -25,6 +51,9 @@ const Movie = ({id}) => {
                 <span>{movie.release_date.split('-')[0]}</span>
             </div>
             <p>{movie.genres.join(', ')}</p>
+            {isBtnOpen && <DetailsButton handleModals={handleModalsVisibility} />}
+            {isEditMovieOpen && <EditMovieModal setIsOpen={setIsEditMovieOpen} movieId={id} />}
+            {isDeleteMovieOpen && <DeleteMovieModal setIsOpen={setIsDeleteMovieOpen} movieId={id} />}
         </article>
     )
 }

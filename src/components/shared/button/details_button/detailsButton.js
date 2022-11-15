@@ -4,15 +4,20 @@ import { Button } from "../button";
 import EditDeleteModal from "../../../edit_delete_modal/editDeleteModal";
 import btnStyles from './detailsButton.module.scss'
 
-const DetailsButton = ({movieId})  =>
+const DetailsButton = ({handleModals})  =>
 {
     const [isOpen, setIsOpen] = useState(false)
+
+    const handleOnClick = () => {
+        setIsOpen(true)
+        // handleModals('editDelete')
+    }
     return (
         <div className={btnStyles.container}>
-            <Button onClick={() => setIsOpen(true)} btnClassName={btnStyles.button}>
+            <Button onClick={handleOnClick} btnClassName={btnStyles.button}>
                 <HiEllipsisVertical />
             </Button>
-            {isOpen && <EditDeleteModal setIsOpen={setIsOpen} movieId={movieId} />}
+            {isOpen && <EditDeleteModal setIsOpen={setIsOpen} handleModals={handleModals} />}
         </div>
     )
 }

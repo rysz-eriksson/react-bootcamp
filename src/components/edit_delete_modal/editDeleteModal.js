@@ -1,17 +1,15 @@
 import React from "react";
 import Modal from "../modal/modal";
-import Dropdown from "../shared/dropdown/dropdown";
+import { Button } from "../shared/button/button";
 
-const EditDeleteModal = ({setIsOpen, movieId}) => {
-
-    const openModal = value => console.log(value)
+const EditDeleteModal = ({setIsOpen, handleModals}) => {
+    const modalKeys = ['Edit', 'Delete']
+    const openModal = value => handleModals(value)
     return (
         <Modal setIsOpen={setIsOpen}>
-            <Dropdown 
-                options={["Edit", "Delete"]} 
-                setSelected={openModal}
-                dropdownId={"edit-delete-movies"}
-            />
+            <div>
+                {modalKeys.map(key => <Button key={key} onClick={() => openModal(key)}>{key}</Button>)}
+            </div>
         </Modal>
     )
 }
