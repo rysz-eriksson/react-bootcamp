@@ -6,24 +6,48 @@ import Movie from '../movie/movie';
 import moviesStyles from './movies.module.scss';
 import { useSelector } from 'react-redux';
 
-const getMoviesIds = ({movies}) => movies.map(movie => movie.id)
-const getSort = (state) => {
-    console.log(state)
-    const {movies, sort} = state
-    const copy = movies.slice()
-    if (sort.value === 'runtime') {
-        "by runtime"
-        
-        copy.sort((a, b) => b.runtime - a.runtime)
+const getSorted = (_movies, _sort) => {
+    if (_sort.value === 'runtime')
+        _movies.sort((a, b) => b.runtime - a.runtime)
+    else {
+        const getParsedDate = date => Date.parse(date)
+        _movies.sort((a, b) => getParsedDate(a.release_date) - getParsedDate(b.release_date))
     }
-    console.log(copy)
-    return copy.map(movie => movie.id)
+    return _movies
+}
+
+const filterByGenre = (movies, byGenre) => {
+    if (byGenre === "All")
+        return movies
+    else
+        return movies.filter(({genres}) => genres.includes(byGenre) )
+    }
+    
+// by title
+const filterByTitle = (movies, byTitle) => {
+    if (!byTitle)
+        return movies
+    else
+        return movies.filter(({title}) => title.toLowerCase().includes(byTitle.toLowerCase()))
+    }
+
+const getFiltered = (_movies, _filter) => {
+    const moviesByGenre = filterByGenre(_movies, _filter.byGenre)
+    return filterByTitle(moviesByGenre, _filter.byTitle)
+}
+
+const getMoviesIds = (state) => {
+    console.log(state)
+    const {movies, sort, filter} = state
+    const moviesCopy = movies.slice()
+    const filteredMovies = getFiltered(moviesCopy, filter)
+    const sortedMovies = getSorted(filteredMovies, sort) 
+    console.log('processed state', sortedMovies)
+    return sortedMovies.map(movie => movie.id)
 }
 
 const Movies = () => {
-    const moviesIds = useSelector(getSort)
-    // const sortCriteria = useSelector(getSort)
-    // console.log(sortCriteria)
+    const moviesIds = useSelector(getMoviesIds)
     return (
         <section className={moviesStyles.section}>
             {moviesIds.map(id => (
