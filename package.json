@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/rysz-eriksson/react-bootcamp#readme",
   "dependencies": {
+    "@apollo/client": "^3.7.3",
     "@reduxjs/toolkit": "^1.9.0",
+    "graphql": "^16.6.0",
     "jest": "^26.6.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

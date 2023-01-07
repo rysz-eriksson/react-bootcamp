@@ -3,16 +3,11 @@ import PropTypes from 'prop-types'
 
 import movieStyles from './movie.module.scss';
 import notFound from '../../images/not-found-image.jpg'
-import { useSelector } from 'react-redux';
 import DetailsButton from '../shared/button/details_button/detailsButton';
 import DeleteMovieModal from '../delete_movie/deleteMovieModal'
 import EditMovieModal from '../edit_movie/editMovieModal'
 
-
-const getMovieById = (state, id) => state.movies.find(movie => movie.id === id)
-
-const Movie = ({id}) => {
-    const movie = useSelector(state => getMovieById(state, id))
+const Movie = ({movie}) => {
     const [isBtnOpen, setIsBtnOpen] = useState(false)
     const [isEditMovieOpen, setIsEditMovieOpen] = useState(false)
     const [isDeleteMovieOpen, setIsDeleteMovieOpen] = useState(false)

@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-
+import {useQuery} from '@apollo/client' 
+import {MOVIES_QUERY} from '../../graphql/queries'
 import Movie from '../movie/movie';
 
 import moviesStyles from './movies.module.scss';
@@ -36,22 +36,25 @@ const getFiltered = (_movies, _filter) => {
     return filterByTitle(moviesByGenre, _filter.byTitle)
 }
 
-const getMoviesIds = (state) => {
-    console.log(state)
-    const {movies, sort, filter} = state
-    const moviesCopy = movies.slice()
-    const filteredMovies = getFiltered(moviesCopy, filter)
-    const sortedMovies = getSorted(filteredMovies, sort) 
-    console.log('processed state', sortedMovies)
-    return sortedMovies.map(movie => movie.id)
-}
+// const getMoviesIds = (state) => {
+//     console.log(state)
+//     const {movies, sort, filter} = state
+//     const moviesCopy = movies.slice()
+//     const filteredMovies = getFiltered(moviesCopy, filter)
+//     const sortedMovies = getSorted(filteredMovies, sort) 
+//     console.log('processed state', sortedMovies)
+//     return sortedMovies.map(movie => movie.id)
+// }
 
 const Movies = () => {
-    const moviesIds = useSelector(getMoviesIds)
+    const {data, loading, error} = useQuery(MOVIES_QUERY)
+    console.log(data, error)
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Something went wrong...</p>
     return (
         <section className={moviesStyles.section}>
-            {moviesIds.map(id => (
-                <Movie key={id} id={id}/>
+            {data.movies.map(movie => (
+                <Movie key={movie.id} movie={movie}/>
             ))}
         </section>
     )
