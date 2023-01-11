@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const releaseDate = 'release-date'
+const releaseDate = 'release_date'
 
 const sortSlice = createSlice({
     name: 'sort',

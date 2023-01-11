@@ -6,7 +6,9 @@ import countStyles from './results_count.module.scss';
 const countedMovies = state => state.movies.length
 
 const ResultsCount = () => {
-    const count = useSelector(countedMovies)
+    // const count = useSelector(countedMovies)
+    const count = 20;
+
     return (
         <section className={countStyles.section}>
             <h4>

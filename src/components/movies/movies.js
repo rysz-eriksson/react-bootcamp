@@ -1,54 +1,15 @@
 import React from 'react';
-import {useQuery} from '@apollo/client' 
-import {MOVIES_QUERY} from '../../graphql/queries'
+import { useMovies } from '../../graphql/hooks';
 import Movie from '../movie/movie';
 
 import moviesStyles from './movies.module.scss';
 import { useSelector } from 'react-redux';
 
-const getSorted = (_movies, _sort) => {
-    if (_sort.value === 'runtime')
-        _movies.sort((a, b) => b.runtime - a.runtime)
-    else {
-        const getParsedDate = date => Date.parse(date)
-        _movies.sort((a, b) => getParsedDate(a.release_date) - getParsedDate(b.release_date))
-    }
-    return _movies
-}
-
-const filterByGenre = (movies, byGenre) => {
-    if (byGenre === "All")
-        return movies
-    else
-        return movies.filter(({genres}) => genres.includes(byGenre) )
-    }
-    
-// by title
-const filterByTitle = (movies, byTitle) => {
-    if (!byTitle)
-        return movies
-    else
-        return movies.filter(({title}) => title.toLowerCase().includes(byTitle.toLowerCase()))
-    }
-
-const getFiltered = (_movies, _filter) => {
-    const moviesByGenre = filterByGenre(_movies, _filter.byGenre)
-    return filterByTitle(moviesByGenre, _filter.byTitle)
-}
-
-// const getMoviesIds = (state) => {
-//     console.log(state)
-//     const {movies, sort, filter} = state
-//     const moviesCopy = movies.slice()
-//     const filteredMovies = getFiltered(moviesCopy, filter)
-//     const sortedMovies = getSorted(filteredMovies, sort) 
-//     console.log('processed state', sortedMovies)
-//     return sortedMovies.map(movie => movie.id)
-// }
-
 const Movies = () => {
-    const {data, loading, error} = useQuery(MOVIES_QUERY)
+    const [filter, sort] = useSelector((state) => [state.filter, state.sort])
+    const {data, loading, error} = useMovies(filter, sort)
     console.log(data, error)
+    console.log(sort, filter)
     if (loading) return <p>Loading...</p>
     if (error) return <p>Something went wrong...</p>
     return (
@@ -59,6 +20,8 @@ const Movies = () => {
         </section>
     )
 }
+
+export default Movies;
 
 // Movies.propTypes = {
 //     movies: PropTypes.arrayOf(
@@ -78,5 +41,3 @@ const Movies = () => {
 //         })
 //     ).isRequired,
 // }
-
-export default Movies;

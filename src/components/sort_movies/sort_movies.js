@@ -13,7 +13,7 @@ const SortMovies = () => {
         <section className={sortStyles.sort}>
             <label htmlFor="sort-movies">Sort movies</label>
             <Dropdown 
-                options={["release-date", "runtime"]} 
+                options={["release_date", "runtime"]} 
                 setSelected={handleSortChange}
                 dropdownId={"sort-movies"}
             />

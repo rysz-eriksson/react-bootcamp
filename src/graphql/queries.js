@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client'
 
 export const MOVIES_QUERY = gql`
-query MoviesQuery {
-    movies {
+query MoviesQuery($input: MoviesInput) {
+    movies(input: $input) {
         id
         title
         release_date
