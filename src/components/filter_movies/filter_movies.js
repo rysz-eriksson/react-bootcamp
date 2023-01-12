@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import {filterSet} from './filterSlice';
+import { filterSet } from '../../redux/filterSlice';
 import filterStyles from './filter_movies.module.scss';
 
 const FilterMovies = (props) => {

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import JSONData from './data/movies.json';
+import JSONData from '../data/movies.json';
 
 const movieKeys = ['id', 'title', 'tagline', 'vote_average', 'vote_count', 'release_date', 'poster_path',
         'overview', 'budget', 'revenue', 'genres', 'runtime']

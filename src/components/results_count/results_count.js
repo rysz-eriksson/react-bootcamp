@@ -3,12 +3,9 @@ import { useSelector } from 'react-redux';
 
 import countStyles from './results_count.module.scss';
 
-const countedMovies = state => state.movies.length
-
 const ResultsCount = () => {
-    // const count = useSelector(countedMovies)
-    const count = 20;
-
+    const count = useSelector((state) => state.count.value)
+    console.log(count)
     return (
         <section className={countStyles.section}>
             <h4>

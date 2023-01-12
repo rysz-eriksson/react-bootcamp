@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMovies } from '../../graphql/hooks';
 import Movie from '../movie/movie';
+import { countSet } from '../../redux/countSlice';
 
 import moviesStyles from './movies.module.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Movies = () => {
     const [filter, sort] = useSelector((state) => [state.filter, state.sort])
     const {data, loading, error} = useMovies(filter, sort)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (data?.movies?.length)
+        dispatch(countSet(data?.movies.length))
+    }, [dispatch, data?.movies.length])
     console.log(data, error)
     console.log(sort, filter)
     if (loading) return <p>Loading...</p>

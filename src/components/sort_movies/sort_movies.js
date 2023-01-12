@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from '../shared/dropdown/dropdown';
-import { sortSet } from './sortSlice';
+import { sortSet } from '../../redux/sortSlice';
 
 import sortStyles from './sort_movies.module.scss';
 
