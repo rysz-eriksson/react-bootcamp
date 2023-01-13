@@ -1,11 +1,19 @@
 import React from 'react';
-import headerStyles from './header.module.scss';
+import styled from 'styled-components';
+
+const StyledHeader = styled.header`
+width: 1100px;
+background-color: #232323;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+`
 
 const Header = (props) => {
     return (
-        <header className={headerStyles.header}>
+        <StyledHeader>
             {props.children}
-        </header>
+        </StyledHeader>
     )
 }
 

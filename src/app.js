@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import './app.scss';
 
@@ -13,22 +14,39 @@ import Movies from './components/movies/movies';
 import Logo from './components/shared/logo/logo';
 import AddMovieBtn from './components/add_movie/add_movie_btn/add_movie_btn';
 
+const Menu = styled.div`
+padding: 10px;
+display: flex;
+justify-content: space-between;
+`
+
+const Submenu = styled.div`
+display: flex;
+justify-content: space-between;
+font-size: 18px;
+color: white;
+margin: 0 auto;
+padding-top: 10px;
+width: 95%;
+`
+
+
 const App = () =>
  {
         return (
             <>
                 <Header>
-                    <div className='menu'>
+                    <Menu>
                         <Logo />
                         <AddMovieBtn />
-                    </div>
+                    </Menu>
                     <SearchMovie />
                 </Header>
                 <Main>
-                    <div className='submenu'>
+                    <Submenu>
                         <FilterMovies />
                         <SortMovies />
-                    </div>
+                    </Submenu>
                     <ResultsCount />
                     <Movies/>
                 </Main>

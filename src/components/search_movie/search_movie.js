@@ -1,45 +1,66 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import formStyles from './search_movie.module.scss';
+import styled from 'styled-components';
+import { Input } from 'antd';
+import { useDispatch } from 'react-redux';
+import { filterSet } from '../../redux/filterSlice';
+import Button from '../shared/button/button';
 
-const SearchMovie = ({handleSearch}) =>
+
+const Form = styled.form`
+margin: 10px auto;
+display: flex;
+label {
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+}
+`
+
+const SearchMovie = () =>
 {
     const [value, setValue] = useState('')
+    const dispatch = useDispatch()
 
     const handleChange = (event) => {
-        this.setValue(event.target.value)
+        setValue(event.target.value)
       }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleSearch(value);
-        setValue('')
+        dispatch(filterSet({key: 'byTitle', value}))
     }
+    console.log(value)
     return (
-        <form 
+        <Form 
         onSubmit={handleSubmit}
-        className={formStyles.form}
         >
-            <label>
-                Find your movie 
-                <input 
-                type="text" 
-                value={value} 
-                onChange={handleChange} 
+            <Input
+                addonBefore={
+                    <label style={{
+                        fontSize: "14px",
+                        color: "white",
+                        textTransform: "uppercase"
+                    }}>
+                        Find your movie
+                    </label>
+                }            
+                allowClear    
                 placeholder="What do you want to watch?"
-                />
-            </label>
-            <button 
+                value={value} 
+                onChange={handleChange}
+                size="large"
+                style={{
+                    margin: "auto 0"
+                }} 
+            />
+            <Button 
+                primary
                 type="submit"
             >
                 Search
-            </button>
-        </form>
+            </Button>
+        </Form>
     )
-}
-
-SearchMovie.propTypes = {
-    handleSearch: PropTypes.func.isRequired,
 }
 
 export default SearchMovie;

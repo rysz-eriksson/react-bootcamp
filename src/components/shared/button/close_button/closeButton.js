@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import btnStyles from './closeButton.module.scss'
 
 
 const Div = styled.div`
