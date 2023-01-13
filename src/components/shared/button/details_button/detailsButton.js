@@ -1,8 +1,13 @@
 import React, {useState} from "react";
+import styled from "styled-components";
 import { HiEllipsisVertical } from "react-icons/hi2";
-import { Button } from "../button";
 import EditDeleteModal from "../../../edit_delete_modal/editDeleteModal";
-import btnStyles from './detailsButton.module.scss'
+
+const Div = styled.div`
+position: absolute;
+top: 10px;
+right: 10px;
+`
 
 const DetailsButton = ({handleModals})  =>
 {
@@ -13,12 +18,12 @@ const DetailsButton = ({handleModals})  =>
         // handleModals('editDelete')
     }
     return (
-        <div className={btnStyles.container}>
-            <Button onClick={handleOnClick} btnClassName={btnStyles.button}>
+        <Div>
+            <button onClick={handleOnClick}>
                 <HiEllipsisVertical />
-            </Button>
+            </button>
             {isOpen && <EditDeleteModal setIsOpen={setIsOpen} handleModals={handleModals} />}
-        </div>
+        </Div>
     )
 }
 

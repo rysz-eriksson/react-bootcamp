@@ -1,15 +1,32 @@
 import React from "react";
-import { Button } from "../button";
+import styled from "styled-components";
 import btnStyles from './closeButton.module.scss'
+
+
+const Div = styled.div`
+display: flex;
+justify-content: flex-end;
+`
+
+const Button = styled.button`
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+`
 
 const CloseButton = ({onClick})  =>
 {
     return (
-        <div className={btnStyles.container}>
-            <Button onClick={onClick} btnClassName={btnStyles.button}>
+        <Div>
+            <Button onClick={onClick}>
                 X
             </Button>
-        </div>
+        </Div>
 
     )
 }

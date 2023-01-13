@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "../modal/modal";
-import { Button } from "../shared/button/button";
+import Button from "../shared/button/button";
 
 const EditDeleteModal = ({setIsOpen, handleModals}) => {
     const modalKeys = ['Edit', 'Delete']
