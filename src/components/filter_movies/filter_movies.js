@@ -1,25 +1,25 @@
 import React from 'react';
+import { List } from 'antd';
 import { useDispatch } from 'react-redux';
 import { filterSet } from '../../redux/filterSlice';
 import filterStyles from './filter_movies.module.scss';
 
-const FilterMovies = (props) => {
+const FilterMovies = () => {
     const dispatch = useDispatch()
     const handleFilterChange = value => dispatch(filterSet({key: 'byGenre', value}))
 
     const genresList = ["All", "Action", "Adventure", "Science Fiction",  "Drama"]
     return (
-        <ul className={filterStyles.filter}>
-            {genresList.map(genre =>
-                {
-                    return (
-                        <li  key={genre}>
-                            <a onClick={(() => handleFilterChange(genre))}>{genre}</a>
-                        </li>
-                    )
-
-                })}
-        </ul>
+        <List 
+            itemLayout="horizontal"
+            className={filterStyles.filter}
+            dataSource={genresList}
+            renderItem={(item) => (
+                <List.Item>
+                  <a onClick={(() => handleFilterChange(item))}>{item}</a>
+                </List.Item>
+              )}
+        />
     )
 }
 
