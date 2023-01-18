@@ -29,7 +29,6 @@ const SearchMovie = () =>
         event.preventDefault();
         dispatch(filterSet({key: 'byTitle', value}))
     }
-    console.log(value)
     return (
         <Form 
         onSubmit={handleSubmit}

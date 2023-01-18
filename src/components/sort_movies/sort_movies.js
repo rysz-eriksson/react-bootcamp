@@ -1,23 +1,39 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import Dropdown from '../shared/dropdown/dropdown';
+import { Select } from 'antd';
+import styled from 'styled-components';
 import { sortSet } from '../../redux/sortSlice';
 
-import sortStyles from './sort_movies.module.scss';
+const Section = styled.section`
+    text-transform: uppercase;
+    display: flex;
+    label {
+        margin: 5px 20px;
+    }
+`
 
 const SortMovies = () => {
     const dispatch = useDispatch()
     const handleSortChange = value => dispatch(sortSet(value))
     
     return (
-        <section className={sortStyles.sort}>
+        <Section>
             <label htmlFor="sort-movies">Sort movies</label>
-            <Dropdown 
-                options={["release_date", "runtime"]} 
-                setSelected={handleSortChange}
-                dropdownId={"sort-movies"}
+            <Select 
+                defaultValue="release_date"
+                onChange={handleSortChange}
+                options={[
+                    {
+                        value: "release_date",
+                        label: "release date"
+                    },
+                    {
+                        value: "runtime",
+                        label: "runtime"
+                    }
+                ]}
             />
-        </section>
+        </Section>
     )
 }
 
