@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types'
 
 import movieStyles from './movie.module.scss';
 import notFound from '../../images/not-found-image.jpg'
-import DetailsButton from '../shared/button/details_button/detailsButton';
+import EditDeleteModal from '../edit_delete_modal/editDeleteModal'
 import DeleteMovieModal from '../delete_movie/deleteMovieModal'
 import EditMovieModal from '../edit_movie/editMovieModal'
 
 const Movie = ({movie}) => {
-    const [isBtnOpen, setIsBtnOpen] = useState(false)
+    const [isEditDeleteOpen, setIsEditDeleteOpen] = useState(false)
     const [isEditMovieOpen, setIsEditMovieOpen] = useState(false)
     const [isDeleteMovieOpen, setIsDeleteMovieOpen] = useState(false)
     const addFallbackImage = (e) => {
@@ -19,14 +18,14 @@ const Movie = ({movie}) => {
         switch(value) {
             case 'Edit':
                 setIsEditMovieOpen(true)
-                setIsBtnOpen(false)
+                setIsEditDeleteOpen(false)
                 break;
             case 'Delete':
                 setIsDeleteMovieOpen(true)
-                setIsBtnOpen(false)
+                setIsEditDeleteOpen(false)
                 break;
             case 'editDelete':
-                setIsBtnOpen(false)
+                setIsEditDeleteOpen(false)
                 break;
     }
 }
@@ -34,8 +33,8 @@ const Movie = ({movie}) => {
     return (
         <article 
             className={movieStyles.article}
-            onMouseEnter={() => setIsBtnOpen(true)}
-            onMouseLeave={() => setIsBtnOpen(false)}
+            onMouseEnter={() => setIsEditDeleteOpen(true)}
+            onMouseLeave={() => setIsEditDeleteOpen(false)}
         >
             <img 
                 src={movie.poster_path}
@@ -46,14 +45,12 @@ const Movie = ({movie}) => {
                 <span>{movie.release_date.split('-')[0]}</span>
             </div>
             <p>{movie.genres.join(', ')}</p>
-            {isBtnOpen && <DetailsButton handleModals={handleModalsVisibility} />}
-            {isEditMovieOpen && <EditMovieModal setIsOpen={setIsEditMovieOpen} movieId={id} />}
-            {isDeleteMovieOpen && <DeleteMovieModal setIsOpen={setIsDeleteMovieOpen} movieId={id} />}
+            {isEditDeleteOpen && <EditDeleteModal handleModals={handleModalsVisibility} />}
+            {isEditMovieOpen && <EditMovieModal  open={isEditMovieOpen} setIsOpen={setIsEditMovieOpen} movieId={movie.id} />}
+            {isDeleteMovieOpen && <DeleteMovieModal open={isDeleteMovieOpen} setIsOpen={setIsDeleteMovieOpen} movieId={movie.id} />}
         </article>
     )
 }
-
-Movie.PropTypes = { id: PropTypes.number.isRequired }
 
 // Movie.propTypes = {
 //     movie: PropTypes.shape({

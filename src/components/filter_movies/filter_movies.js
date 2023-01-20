@@ -16,7 +16,7 @@ const FilterMovies = () => {
             dataSource={genresList}
             renderItem={(item) => (
                 <List.Item>
-                  <a onClick={(() => handleFilterChange(item))}>{item}</a>
+                  <a onClick={() => handleFilterChange(item)}>{item}</a>
                 </List.Item>
               )}
         />

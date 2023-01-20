@@ -1,13 +1,31 @@
 import React from "react";
-import BigModal from "../big_modal/big_modal";
+import { Modal } from 'antd';
+import Button from "../shared/button/button";
 
-import modalStyles from './editMovieModal.module.scss';
 
-const EditMovieModal = ({setIsOpen, movieId}) =>
+const EditMovieModal = ({open, setIsOpen, movieId}) =>
 {
+    const editMovie = () => {
+        console.log(`Edit movie with id: ${movieId}`)
+        setIsOpen(false)
+    }
+
+    const resetForm = () => {
+        console.log("reset form")
+        setIsOpen(false)
+    }
+
     return (
-        <BigModal setIsOpen={setIsOpen} title={'EDIT MOVIE'}>
-        </BigModal>
+    <Modal
+        open={open}
+        title="EDIT MOVIE"
+        onCancel={resetForm}
+        footer={[
+            <Button secondary onClick={resetForm}>RESET</Button>,
+            <Button primary onClick={editMovie}>SAVE</Button>
+        ]}
+    >
+    </Modal> 
     )
 }
 

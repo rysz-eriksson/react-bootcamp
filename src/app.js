@@ -12,7 +12,7 @@ import SortMovies from './components/sort_movies/sort_movies';
 import ResultsCount from './components/results_count/results_count';
 import Movies from './components/movies/movies';
 import Logo from './components/shared/logo/logo';
-import AddMovieBtn from './components/add_movie/add_movie_btn/add_movie_btn';
+import AddMovieModal from './components/add_movie/add_movie_modal/add_movie_modal';
 
 const Menu = styled.div`
 padding: 10px;
@@ -38,7 +38,7 @@ const App = () =>
                 <Header>
                     <Menu>
                         <Logo />
-                        <AddMovieBtn />
+                        <AddMovieModal />
                     </Menu>
                     <SearchMovie />
                 </Header>

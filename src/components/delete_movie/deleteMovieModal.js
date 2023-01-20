@@ -1,13 +1,31 @@
 import React from "react";
-import BigModal from "../big_modal/big_modal";
+import { Modal } from 'antd';
+import Button from "../shared/button/button";
 
-import modalStyles from './deleteMovieModal.module.scss';
 
-const DeleteMovieModal = ({setIsOpen, movieId}) =>
+const DeleteMovieModal = ({open, setIsOpen, movieId}) =>
 {
+    const editMovie = () => {
+        console.log(`Delete movie with id: ${movieId}`)
+        setIsOpen(false)
+    }
+
+    const closeModal = () => {
+        console.log("close delete movie modal")
+        setIsOpen(false)
+    }
+
     return (
-        <BigModal setIsOpen={setIsOpen} title={'DELETE MOVIE'}>
-        </BigModal>
+    <Modal
+        open={open}
+        title="DELETE MOVIE"
+        onCancel={closeModal}
+        footer={[
+            <Button primary onClick={editMovie}>CONFIRM</Button>
+        ]}
+    >
+            <p>Are you sure you want to delete this movie?</p>
+    </Modal> 
     )
 }
 

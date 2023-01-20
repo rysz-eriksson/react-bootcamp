@@ -1,19 +1,38 @@
-import React from "react";
-import BigModal from "../../big_modal/big_modal";
+import React,  {useState} from "react";
+import { Modal } from 'antd';
 import Button from "../../shared/button/button";
 
-const AddMovieModal = ({setIsOpen}) =>
+const AddMovieModal = () =>
 {
-    const onAddMovie = () => setIsOpen(false)
-    const onReset = () => setIsOpen(false)
+    const [open, setIsOpen] = useState(false)
+    const addMovie = () => {
+        console.log("movie added")
+        setIsOpen(false)
+    }
+    
+    const resetForm = () => {
+        console.log("reset form")
+        setIsOpen(false)
+    }
+    
     return (
-        <BigModal setIsOpen={setIsOpen} title={'ADD MOVIE'}>
-            <section>
-                <Button secondary onClick={onReset}>RESET</Button>
-                <Button primary onClick={onAddMovie}>SUBMIT</Button>
+        <>
+            <Button onClick={() => setIsOpen(true)}>
+                +Add movie
+            </Button>
+            <Modal
+                open={open}
+                title="ADD MOVIE"
+                onOk={addMovie}
+                onCancel={resetForm}
+                footer={[
+                    <Button secondary onClick={resetForm}>RESET</Button>,
+                    <Button primary onClick={addMovie}>SUBMIT</Button>
+                ]}
 
-            </section>
-        </BigModal>
+            >
+            </Modal> 
+        </>
     )
 }
 
