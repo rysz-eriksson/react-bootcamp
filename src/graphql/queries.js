@@ -32,6 +32,14 @@ query MovieQuery($id: Int!) {
 }
 `
 
+export const DELETE_MOVIE_MUTAION = gql`
+mutation deleteMovieMutation($id: Int!) {
+  movie: deleteMovie(id: $id) {
+    id
+  }
+}
+`
+
 //         tagline: PropTypes.string,
 //         vote_average: PropTypes.number.isRequired,
 //         vote_count: PropTypes.number.isRequired,

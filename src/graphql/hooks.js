@@ -1,5 +1,5 @@
-import { MOVIES_QUERY } from "./queries"
-import { useQuery } from "@apollo/client"
+import { MOVIES_QUERY, DELETE_MOVIE_MUTAION } from "./queries"
+import { useQuery, useMutation } from "@apollo/client"
 
 export const useMovies = (filter, sort) => {
     const filterSortInput = {
@@ -12,4 +12,12 @@ export const useMovies = (filter, sort) => {
     })
 
     return {data, loading, error}    
+}
+
+export const useDeleteMovie = async(id) => {
+    const [deleteMovie, {data, loading, error}] = useMutation(DELETE_MOVIE_MUTAION)
+    await deleteMovie({
+        variables: {id}
+    })
+    return {data, loading, error}
 }
