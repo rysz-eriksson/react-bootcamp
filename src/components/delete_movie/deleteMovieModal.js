@@ -1,17 +1,15 @@
 import React from "react";
 import { Modal } from 'antd';
-import { useMutation } from "@apollo/client";
-import { DELETE_MOVIE_MUTAION } from "../../graphql/queries";
-// import { useDeleteMovie } from "../../graphql/hooks";
+import { useDeleteMovie } from "../../graphql/hooks";
 import Button from "../shared/button/button";
 
 
 const DeleteMovieModal = ({open, setIsOpen, movieId}) =>
 {
-    const [deleteMovie, {data, loading, error}] = useMutation(DELETE_MOVIE_MUTAION)
+    const [deleteMovie, {data, loading, error}] = useDeleteMovie(movieId)
     const onDeleteMovie = () => {
         // const data = await useDeleteMovie(movieId)
-        deleteMovie({variables: {id: movieId}})
+        deleteMovie()
         console.log(`Deleted movie with id: ${movieId}`)
         console.log(data)
         setIsOpen(false)

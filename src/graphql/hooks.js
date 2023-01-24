@@ -14,10 +14,17 @@ export const useMovies = (filter, sort) => {
     return {data, loading, error}    
 }
 
-export const useDeleteMovie = async(id) => {
-    const [deleteMovie, {data, loading, error}] = useMutation(DELETE_MOVIE_MUTAION)
-    await deleteMovie({
-        variables: {id}
+export const useDeleteMovie = (id) => {
+    const [deleteMovie, result] = useMutation(DELETE_MOVIE_MUTAION, {
+        variables: {id},
+        refetchQueries: [
+            {query: MOVIES_QUERY},
+            'MoviesQuery'
+        ]
     })
-    return {data, loading, error}
+
+    return [
+        deleteMovie,
+        result
+    ] 
 }
